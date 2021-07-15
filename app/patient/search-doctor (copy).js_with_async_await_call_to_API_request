@@ -1,0 +1,262 @@
+
+
+const {check, validationResult} = require('express-validator');
+const Patient = require('../../models/patient');
+const common = require('../../utility/common');
+var dlog = require('debug')('dlog')
+var mongoDB = require('../../databaseconstant');
+var MongoClient = require('mongodb').MongoClient;
+const { Validator } = require('node-input-validator');
+const Str = require('@supercharge/strings')
+var fs = require('fs');
+var request = require('request');
+
+
+var doctorAppDoctorFetchApiEndPoint =  "http://"+process.env.DOCTORAPPIPADDRESS+":"+process.env.DOCTORAPPPORT+"/api/fetchDoctorDetails"
+
+module.exports = function (app) {
+
+    app.post('/api/fetch-doctors-by-price', [        
+        check('price').not().isEmpty().trim()  
+     ],function (req, res) {        
+           dlog(" inside fetch-doctors-by-price api  ")
+     
+           const errors = validationResult(req);
+           if (!errors.isEmpty()) {
+             return common.handleError(errors.array(),'Validation error.',res,999)
+           }
+     
+           dlog("price ="+req.body.price)
+           MongoClient.connect(mongoDB.doctorDBUrl, function(err, database) {
+        
+            var db = database.db()     
+      
+            
+            if (err ) return  common.handleError(err, 'No DB connection could be made to  DB',res,500)  
+              
+            dlog(" Database connected successfully at updateAppointmentPatientDB")
+            
+            let filter ={ serviceFees: req.body.price  }
+        
+            db.collection('settings').find(filter).toArray(function(err, settingArry) {
+                
+                if (err ) return  common.handleError(err, 'Error, No doctor record found with the given service fees',res,500)   
+                if (!settingArry){
+                  database.close();                  
+                  return  common.handleError(err, 'No doctor record found with the given service fees',res,500)   
+                }
+
+                var doctorIdList = []
+        
+                for( var i in settingArry){
+        
+                  let attendant = settingArry[i]
+                  if(!doctorIdList.includes(attendant['doctorId']) && attendant['doctorId'] !=null){
+                    doctorIdList.push({doctorID:attendant['doctorId']})
+                  }
+                  
+                }
+            
+                if(doctorIdList){
+                  callDoctorListFunction(doctorIdList,res)
+              }
+               /* dlog("name ="+JSON.stringify(doctorIdList))
+        
+               return res.json({
+                status: true,
+                message: 'Doctor array retrieval success...',
+                data: doctorIdList
+                });
+               */
+              
+              });
+          
+           });
+       
+       });
+
+       app.post('/api/fetch-doctors-by-datetime', [        
+        check('date').not().isEmpty().trim()  ,
+        check('time').not().isEmpty().trim()  
+     ],function (req, res) {      
+          
+           dlog(" inside fetch-doctors-by-datetime api  ")
+     
+           const errors = validationResult(req);
+           if (!errors.isEmpty()) {
+             return common.handleError(errors.array(),'Validation error.',res,999)
+           }
+     
+           dlog("price ="+req.body.price)
+           MongoClient.connect(mongoDB.doctorDBUrl, function(err, database) {
+        
+            var db = database.db()     
+      
+            
+            if (err ) return  common.handleError(err, 'No DB connection could be made to  DB',res,500)  
+              
+            dlog(" Database connected successfully at updateAppointmentPatientDB")
+            
+            let filter ={ "dateTime": {date: req.body.date, time : req.body.time }  }
+        
+         //   db.collection('practice_locations').find(filter,function(err, locationArry) {
+            db.collection('practice_locations').find(filter).toArray(function(err, locationArry) {
+                
+                if (err ) return  common.handleError(err, 'Error, No doctor record found with the given service fees',res,500)   
+                if (!locationArry){
+                  database.close();                  
+                  return  common.handleError(err, 'No doctor record found with the given service fees',res,500)   
+                }
+
+                
+                
+
+                if(locationArry){
+                    callDoctorListFunction(locationArry,res)
+                }
+             /*   var doctorIdList = []
+               // var doctorList = []
+               // dlog("locationArry ="+JSON.stringify(locationArry))
+                for( var i in locationArry){
+        
+                  let attendant = locationArry[i]
+                  if(!doctorIdList.includes(attendant['doctorID']) && attendant['doctorID'] !=null){
+                    doctorIdList.push(attendant['doctorID'])
+                  }
+                  
+                }
+              //  dlog("doctorIdList ="+JSON.stringify(doctorIdList))
+                fetchDoctorList(doctorIdList,res)*/
+             //   dlog("doctorList ="+JSON.stringify(doctorList))
+        
+              
+                
+                             
+              });
+          
+           });
+       
+       });      
+
+}
+function callDoctorListFunction(locationArry,res){
+  var doctorList = []  
+
+  let arrayLen = locationArry.length
+
+  dlog("arrayLen ="+arrayLen)
+
+  locationArry.forEach(function(listItem, index){
+
+    let doctorId  = listItem.doctorID
+    let jsonBody = {
+      "doctorId":doctorId
+      }
+  
+      //dlog("jsonBody ="+JSON.stringify(jsonBody))
+      request({
+        url: doctorAppDoctorFetchApiEndPoint,
+        method: 'POST',      
+        headers: {
+          'content-Type' :"application/json",    
+          'accept':"application/json"
+        },
+        body: JSON.stringify(jsonBody)}
+      , function(error, response, body) {
+        if (error) { 
+          return  common.handleError(err, 'Failed to retrieve doctors',res,500) 
+        }                        
+        else {                      
+            let json = JSON.parse(body);
+            if(json && json.data){
+              console.log("json == "+JSON.stringify(json.data))
+              doctorList.push(json.data)
+            }
+
+            
+            console.log(JSON.stringify(doctorList))
+            dlog("index ="+index)
+
+            if(index == arrayLen -1){
+              return res.json({
+                status: true,
+                message: 'Doctor array retrieval success...',
+                //data: doctorIdList
+                data : doctorList
+                });
+            }
+        }
+      });
+      
+
+  })
+}
+
+async function fetchDoctorList(doctorIdList,res) {
+
+    var doctorList = []
+ // for (var i = 0; i < doctorIdList.length; i++) {
+
+    for( var i in doctorIdList){
+    //doctorIdList.forEach(async (doctorId) => {
+        
+      let doctorId = doctorIdList[i]
+      //console.log(i);
+      await  fetchDoctor(doctorId,i,doctorList);
+        //console.log("json =="+JSON.stringify(await  fetchDoctor(doctorId)))
+      //  doctorList.push(json)
+
+      //doctorList.push(await fetchDoctor(doctorId))
+    }
+
+    setTimeout(() => {
+      console.log("jambo");
+  }, 1000);
+
+  dlog("doctorList ="+JSON.stringify(doctorList))
+        
+  return  res.json({
+   status: true,
+   message: 'Doctor array retrieval success...',
+   //data: doctorIdList
+   data : doctorList
+   });
+  
+}
+async function fetchDoctor(doctorId,index,doctorList){
+  let jsonBody = {
+    "doctorId":doctorId
+    }
+
+   // dlog("jsonBody ="+JSON.stringify(jsonBody))
+    request({
+      url: "http://localhost:5000/api/fetchDoctorDetails",
+      method: 'POST',      
+      headers: {
+        'content-Type' :"application/json",    
+        'accept':"application/json"
+      },
+      body: JSON.stringify(jsonBody)}
+    , function(error, response, body) {
+    /*  if (error) { 
+        console.error(error, response, body); 
+      }
+      else if (response.statusCode >= 400) { 
+        console.error('HTTP Error: '+response.statusCode+' - '+response.statusMessage+'\n'+body); 
+      }
+      else {*/
+      // console.log('Done! response = ')
+       //console.log(JSON.stringify(response))
+
+       console.log('Done with '+index)
+        if(response.body)
+        doctorList.push(response.body)
+
+      
+
+        return "hello"
+
+
+      //}
+    });
+}

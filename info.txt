@@ -1,0 +1,297 @@
+sourav.r@pivotnet.in/souravrpivot@123
+
+sourav.r@drsignet.com
+sourav@123
+
+https://medium.com/@bugwheels94/performance-difference-in-mongoose-vs-mongodb-60be831c69ad
+
+
+cd D:\office\drsignet
+1533404685
+
+
+
+git clone https://git-codecommit.ap-south-1.amazonaws.com/v1/repos/drsignet
+
+"C:\Program Files\Git\usr\bin\ssh-keygen.exe"
+ /c/Users/sanku/.ssh/id_rsa.
+
+drsignetindia@gmail.com
+
+        "uploadPhotoDemographicURL": "http://15.206.60.228/public/images/uploadPhotoDemographic_Matt_Demon.jpeg",
+        "uploadPhotoProfessionalURL": "http://15.206.60.228/public/images/uploadPhotoProfessional_Matt_Demon.jpeg",
+        "__v": 0
+
+http://15.206.60.228/public/images/uploadPhotoDemographic_ROy_sourav.jpeg
+http://15.206.60.228/public/images/uploadPhotoProfessional_ROy_sourav.jpeg
+git clone https://git-codecommit.ap-south-1.amazonaws.com/v1/repos/drsignet
+
+
+user: info@drsignet.com
+pass: k4dq31JQG}Q#
+
+
+Hi Milan/Rudrasis, so what are the APIs I should look into immediately, registration and login APIs are not yet fully 
+
+
+
+sourav.r@drsignet.com-at-664359145720	jIZvhrPj+223szet0BRtG8YBCcmFFrCoaoO/QQK375M=
+
+rajat whatsapp 9903404379
+
+
+cd D:\office\drsignet
+
+set DEBUG=* & nodemon index.js
+
+
+name.replace(/\s/g, '')
+
+pivotnet29@gmail.com,
+
+please share me your google doc file link with only "CanView" option in my mail id rajat.subhra02@gmail.com
+//var sendemailid='pivotnettest@gmail.com'
+ //var sendemailidpassword='pivotnet@123'
+
+        /*
+            var transporter = nodemailer.createTransport({
+                'host':host,
+                secure: true,    
+                secureConnection: true,    
+                'auth':{
+                    'user':sendemailid,
+                    'pass':sendemailidpassword,
+                    'tls': {
+                        'rejectUnauthorized':false
+                    }
+                }        
+            });
+            */        
+/*
+           var transporter = nodemailer.createTransport({
+            service: 'Gmail',
+              auth: {
+                user: sendemailid,
+                pass: sendemailidpassword,
+                host: host, 
+                ssl: true
+              }
+        });
+        */
+    
+
+User Name	Password
+sourav.r@drsignet.com-at-664359145720	jIZvhrPj+223szet0BRtG8YBCcmFFrCoaoO/QQK375M=
+
+
+
+menu section 
+
+1. Dispensary Location
+2. Appointments
+3. Notifications
+3. Tokens
+4. E-Prescription :: Have doc
+5. Schedules
+6. Payments
+7. Settings
+
+Http://15.206.60.226
+
+Http://15.206.60.226
+
+
+DB Admin User - asmongoadmin
+DB Admin Pwd - AjW8YugO76gT56fLpQ
+
+DB user - drsignetAdmin
+DB pwd - AjYugO76gT56fLpQ
+DB - Drsignetdb
+
+mongo  -u asmongoadmin -p --host 13.233.131.184 --port 27010
+
+mongo admin -u asmongoadmin -p --host 10.41.2.63 --port 27010
+mongodb://drsignetAdmin:AjYugO76gT56fLpQ@10.41.2.63:27025/Drsignetdb
+
+Hi ,
+
+APis completed till now 
+
+On registration and login module :
+
+1) /signup, 
+2) /first-login, 
+3)/login, 
+4) /send-otp 
+
+On practice location manager :
+
+ 5) /practice-location-add ,
+6) list /practice-location per given doctorID,
+7)  /api/attendant-list, 
+8) /api/delete-practice-location.
+
+On Appointment manager :
+
+9) /api/view-appointment/:id
+10 )/api/view-appointment-bylocation
+
+regards
+Sourav Roy
+
+Anyway I've started investigating and trying to research on to figure out if there is any workaround to address our requirement.
+
+I'll try to give you more updates tomorrow.
+
+
+db.createUser(
+  {
+    user: "reportsUser",
+    pwd: passwordPrompt(),  // or cleartext password
+    roles: [
+       { role: "read", db: "reporting" },
+       { role: "read", db: "products" },
+       { role: "read", db: "sales" },
+       { role: "readWrite", db: "accounts" }
+    ]
+  }
+)
+Email: sourav.r@drsignet.com
+Password: bov32jk
+
+DB Admin User - asmongoadmin
+DB Admin Pwd - AjW8YugO76gT56fLpQ
+
+DB user - drsignetAdmin
+DB pwd - AjYugO76gT56fLpQ
+DB - Drsignetdb
+
+mongo admin -u asmongoadmin -p --host 10.41.2.63 --port 27010
+mongodb://drsignetAdmin:AjYugO76gT56fLpQ@10.41.2.63:27025/Drsignetdb
+
+
+mongo -u asmongoadmin -p --host 10.41.2.63 --port 27010 --authenticationDatabase Drsignetdb
+
+
+mongo admin -u asmongoadmin -p --host 10.41.2.63 --port 27010
+
+Please click the button 
+
+sanku@sanku-PC MINGW64 /d/coderepo/drsignet (stage)
+$ 
+[stage e5cb919] latest APIs push 2 April 2020 by Sourav
+ 6 files changed, 449 insertions(+), 49 deletions(-)
+ create mode 100644 models/appointmentDoctorApp.js
+ create mode 100644 models/appointmentPatientApp.js
+
+$ git branch -a
+  master
+* stage
+  remotes/origin/HEAD -> origin/master
+  remotes/origin/master
+  remotes/origin/stage
+  remotes/origin/staging
+  remotes/origin/suman-dev
+
+sanku@sanku-PC MINGW64 /d/coderepo/drsignet (stage)
+$
+
+
+sourav.r@drsignet.com-at-664359145720
+jIZvhrPj+223szet0BRtG8YBCcmFFrCoaoO/QQK375M=
+
+
+cd /d/coderepo/drsignet
+
+git status
+
+git add *
+
+git commit -m " API 10, 11, and 12  profile manager APIs push 8 April 2020 by Sourav"
+
+git commit -m "eprescription related APIs April 16 2020"
+
+
+
+git push origin stage
+
+
+ git ls-tree -r stage
+
+sanku@sanku-PC MINGW64 /d/coderepo/drsignet (stage)
+
+git push origin stage
+
+Enumerating objects: 27, done.
+Counting objects: 100% (27/27), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (17/17), done.
+Writing objects: 100% (18/18), 4.75 KiB | 1.58 MiB/s, done.
+Total 18 (delta 8), reused 0 (delta 0)
+To https://git-codecommit.ap-south-1.amazonaws.com/v1/repos/drsignet
+   a79f359..1f3e160  stage -> stage
+
+sanku@sanku-PC MINGW64 /d/coderepo/drsignet (stage)
+
+
+Practice is catagory is Homeopath ,aleopath,aurvedic , UnaniOdentologistOrthologyPediatrics OpthomologyEndocrinologyPolifologiyPhysicianGenreal practice CardiologyCardi medics Cardiovascular
+
+Milan when I create an invoice how the amount is calculated ?
+I believe from a table holding the following information saved before invoice creation process might be used such as the doctor fees, GST, commission to DrSignet, right ?
+
+Keeping this need in mind should I first create an API which does this saving of doctor fees, GST, commission to DrSignet which will be first called from doctor app ?
+
+However this commission to DrSignet may be again saved/predefind and should be saved elsewhere, I think in some table say "settings" related to DrSignet.
+
+One more question is this doctor fees the only factor to calculate total invoice or doctor hours or any other factors  should also be taken into consideration ? if "yes" what are they ?
+
+
+
+
+
+http://localhost:5000/api/eprescription-status-add
+{
+    "status": false,
+    "message": "No eprescription record found with the given  ID",
+    "error": ""
+}
+
+http://localhost:5000/api/eprescription-basic-details-add
+{
+    "status": false,
+    "message": "No eprescription record found with the given  ID",
+    "error": "Cast to ObjectId failed for value \"5e94703aeca6f2628334abd\" at path \"_id\" for model \"eprescription-opens\""
+}
+
+
+http://localhost:5000/api/eprescription-basic-details-edit
+{
+    "status": false,
+    "message": "No eprescription status record found with the given eprescriptionBasicDetailsId",
+    "error": "Cast to ObjectId failed for value \"5e95c9c1bfe4b611946e8a8\" at path \"_id\" for model \"eprescription-basic-details\""
+
+
+
+***************************WEB SERVER ISSUE **************************************
+
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+<html>
+    <head>
+        <title>503 Service Unavailable</title>
+    </head>
+    <body>
+        <h1>Service Unavailable</h1>
+        <p>The server is temporarily unable to service your
+request due to maintenance downtime or capacity
+problems. Please try again later.</p>
+    </body>
+</html>
+
+
+****************************************************
+
+
+
+
+
+}

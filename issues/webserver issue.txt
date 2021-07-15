@@ -1,0 +1,13 @@
+PM2      | Change detected on path public/images/uploadPhotoProfessional_ROy_sourav.jpeg for app index - restarting
+PM2      | Stopping app:index id:0
+0|index  | 2020-04-07T13:07:33.401Z dlog htmlText==<h4>      Hi,  ROy sourav, your registration is successful. </h4><p>      Thanking you.   </p>
+0|index  | 2020-04-07T13:07:33.401Z dlog toEmail==souravrec34@gmail.com
+0|index  | Tue, 07 Apr 2020 13:07:33 GMT morgan log request
+0|index  | POST /api/signup 200 32.113 ms - 12070
+0|index  | 2020-04-07T13:07:33.413Z dlog professionalFile created successfully with Node.js v10 fs/promises!
+0|index  | 2020-04-07T13:07:33.413Z dlog demographicFile created successfully with Node.js v10 fs/promises!
+PM2      | App [index:0] exited with code [0] via signal [SIGINT]
+PM2      | pid=12113 msg=process killed
+PM2      | App [index:0] starting in -fork mode-
+PM2      | App [index:0] online
+0|index  | Tue, 07 Apr 2020 13:07:33 GMT express:application set "x-powered-by" to true
